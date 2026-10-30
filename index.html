@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人体使用手册 — 一本可以「玩」的中英双语人体科普书</title>
+<meta name="description" content="《人体使用手册》iPhone / iPad App：中英逐段对照的人体科普书，281 幅图、17 个互动实验、56 种疾病图鉴、401 道自测题。免费下载试读，完整版一次买断。">
+<link rel="canonical" href="https://mybody.myheartand.me/">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#FAF7F2">
+<meta name="apple-itunes-app" content="app-id=6825831716">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mybody.myheartand.me/">
+<meta property="og:title" content="人体使用手册 — 一本可以「玩」的中英双语人体科普书">
+<meta property="og:description" content="《人体使用手册》iPhone / iPad App：中英逐段对照的人体科普书，281 幅图、17 个互动实验、56 种疾病图鉴、401 道自测题。免费下载试读，完整版一次买断。">
+<meta property="og:image" content="https://mybody.myheartand.me/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root {
+    color-scheme: light;
+    --paper: #FAF7F2; --surface: #FFFFFF; --sunken: #F2EEE7; --hair: #E6E0D7;
+    --ink: #1D1B19; --ink2: #6B6560; --ink3: #9A938C;
+    --accent: #C2253D; --accent-deep: #9E1B30; --accent-soft: #FBE4E6; --en-bar: #F4A7A7;
+    --vein: #3F5E8C; --vein-soft: #E6ECF5;
+    --serif: "Songti SC", "STSong", "Noto Serif SC", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+    --latin: Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+    --wrap: 1120px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.75 var(--sans); overflow-x: hidden; }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  i[lang="en"], .latin { font-family: var(--latin); font-style: italic; font-weight: 400; color: var(--ink2); }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 700; line-height: 1.25; margin: 0; letter-spacing: 0.01em; text-wrap: balance; }
+  p, li { text-wrap: pretty; }
+  h2 { font-size: clamp(28px, 4.2vw, 42px); }
+  h2 i[lang="en"], h3 i[lang="en"] { display: block; font-size: 0.48em; margin-top: 8px; letter-spacing: 0; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 720px) { .wrap { padding: 0 32px; } }
+
+  /* 顶栏 */
+  .bar { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--paper) 86%, transparent);
+         backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px);
+         border-bottom: 0.5px solid transparent; transition: border-color .2s; }
+  .bar.scrolled { border-bottom-color: var(--hair); }
+  .bar .wrap { display: flex; align-items: center; gap: 20px; height: 60px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-family: var(--serif); font-weight: 700; font-size: 18px; white-space: nowrap; }
+  .brand img { width: 30px; height: 30px; border-radius: 7px; box-shadow: 0 0 0 0.5px var(--hair); }
+  .bar nav { display: flex; gap: 22px; margin-left: auto; font-size: 15px; }
+  .bar nav a { color: var(--ink2); text-decoration: none; }
+  .bar nav a:hover { color: var(--ink); }
+  @media (max-width: 760px) { .bar nav { display: none; } .bar .btn { margin-left: auto; } }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 13px 24px; font-weight: 600; font-size: 16px;
+         text-decoration: none; white-space: nowrap; transition: transform .15s, background .15s; }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 6px 18px -8px rgba(194, 37, 61, .6); }
+  .btn-primary:hover { background: var(--accent-deep); }
+  .btn-primary.soon { background: var(--ink); box-shadow: none; cursor: default; }
+  .btn-ghost { color: var(--ink); background: transparent; box-shadow: inset 0 0 0 1px var(--hair); }
+  .btn-ghost:hover { background: var(--surface); }
+  .bar .btn { padding: 8px 16px; font-size: 14px; }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+
+  /* 首屏 */
+  .hero { padding: 40px 0 24px; overflow: hidden; }
+  .hero .wrap { display: grid; gap: 28px; align-items: center; }
+  @media (min-width: 900px) { .hero { padding: 72px 0 40px; } .hero .wrap { grid-template-columns: 1.08fr 0.92fr; gap: 40px; } }
+  .eyebrow { display: inline-flex; gap: 8px; flex-wrap: wrap; margin: 0 0 18px; font-size: 13px; color: var(--accent); font-weight: 600; letter-spacing: .04em; }
+  .eyebrow span { background: var(--accent-soft); padding: 3px 10px; border-radius: 99px; }
+  .hero h1 { font-size: clamp(46px, 8vw, 84px); letter-spacing: 0.02em; }
+  .hero .en-title { font-size: clamp(19px, 2.4vw, 26px); margin: 8px 0 0; }
+  .lead { font-size: clamp(18px, 2vw, 21px); line-height: 1.8; margin: 26px 0 0; max-width: 32em; }
+  .lead .q { font-family: var(--serif); color: var(--ink); }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 30px 0 0; }
+  .fine { margin: 16px 0 0; font-size: 14px; color: var(--ink2); }
+  .fine b { color: var(--ink); font-weight: 600; }
+  .hero-visual { position: relative; display: grid; place-items: center; min-height: 520px; }
+  .hero-visual .wash { position: absolute; inset: -6% -14% -4% -14%; background: url(img/onboarding-1.jpg) center / contain no-repeat;
+                       -webkit-mask-image: radial-gradient(closest-side, #000 62%, transparent); mask-image: radial-gradient(closest-side, #000 62%, transparent); opacity: .9; }
+  .hero-visual .phone { width: min(292px, 66vw); position: relative; transform: rotate(2.5deg); }
+  @media (max-width: 899px) { .hero-visual { min-height: 0; padding: 12px 0 8px; } }
+
+  .phone { margin: 0; aspect-ratio: 600 / 1304; border-radius: 15% / 7%; padding: 3.2%; background: #1D1B19;
+           box-shadow: 0 0 0 1px #3a3633, 0 30px 60px -24px rgba(60, 30, 20, .45), 0 12px 24px -12px rgba(60, 30, 20, .25); }
+  .phone img { width: 100%; height: 100%; object-fit: cover; border-radius: 12.4% / 5.8%; }
+
+  /* 数字 */
+  .stats ul { list-style: none; margin: 0; padding: 26px 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px 12px;
+              border-top: 0.5px solid var(--hair); border-bottom: 0.5px solid var(--hair); }
+  @media (min-width: 900px) { .stats ul { grid-template-columns: repeat(6, 1fr); } }
+  .stats li { text-align: center; display: grid; gap: 2px; }
+  .stats b { font-family: var(--serif); font-size: clamp(30px, 4vw, 40px); color: var(--accent); line-height: 1.1; }
+  .stats span { font-size: 14px; }
+  .stats i { font-size: 12px; }
+
+  /* 读 · 玩 · 学 */
+  .feature { padding: 88px 0 0; }
+  .feature .wrap { display: grid; gap: 36px; align-items: center; }
+  @media (min-width: 900px) {
+    .feature .wrap { grid-template-columns: 1fr 1fr; gap: 64px; }
+    .feature.flip .copy { order: 2; }
+  }
+  .mark { display: inline-grid; place-items: center; width: 56px; height: 56px; border-radius: 16px; background: var(--accent-soft);
+          color: var(--accent); font-family: var(--serif); font-size: 30px; font-weight: 700; margin-bottom: 18px; }
+  .feature.blue .mark { background: var(--vein-soft); color: var(--vein); }
+  .copy > p { color: var(--ink2); margin: 18px 0 0; max-width: 30em; }
+  .ticks { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 10px; }
+  .ticks li { display: flex; gap: 10px; align-items: flex-start; }
+  .ticks svg { width: 18px; height: 18px; flex: none; margin-top: 5px; color: var(--accent); }
+  .feature.blue .ticks svg { color: var(--vein); }
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 6%; max-width: 560px; margin: 0 auto; width: 100%; padding: 0 4%; }
+  .duo .phone:last-child { transform: translateY(12%); }
+  .feature .duo { padding-bottom: 12%; }
+
+  /* 试读一段 */
+  .sample { padding: 96px 0 0; }
+  .section-head { text-align: center; max-width: 40em; margin: 0 auto 36px; }
+  .section-head p { color: var(--ink2); margin: 16px 0 0; }
+  .page { max-width: 760px; margin: 0 auto; background: var(--surface); border-radius: 24px; padding: clamp(22px, 5vw, 52px);
+          box-shadow: 0 0 0 0.5px var(--hair), 0 30px 60px -40px rgba(60, 30, 20, .35); }
+  .page-head { display: flex; justify-content: space-between; margin: 0 0 18px; font-size: 13px; color: var(--ink3); }
+  .page-head span[lang] { font-family: var(--latin); font-style: italic; }
+  .page h3 { font-size: clamp(22px, 3vw, 28px); display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+  .page h3 i { font-size: 16px; display: block; flex-basis: 100%; margin: 0; }
+  .sec-num { color: var(--accent); }
+  .figure { margin: 24px 0; }
+  .figure-img { position: relative; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 0 0 0.5px var(--hair); }
+  .dot, .num { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: #1D1B19; color: #fff;
+               font: 600 13px/1 var(--sans); box-shadow: 0 0 0 2px #fff; }
+  .dot { position: absolute; transform: translate(-50%, -50%); }
+  .legend { list-style: none; padding: 0; margin: 14px 0 6px; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 6px 14px; font-size: 14px; }
+  .legend li { display: flex; align-items: center; gap: 8px; }
+  .legend .num { width: 20px; height: 20px; font-size: 11px; box-shadow: none; flex: none; }
+  .legend i { font-size: 13px; }
+  .figure figcaption { font-size: 13px; color: var(--ink3); }
+  .figure figcaption i { font-size: 13px; color: var(--ink3); }
+  .page p.zh { font-family: var(--serif); font-size: 19px; line-height: 1.9; margin: 24px 0 8px; }
+  .page p.en { font-family: var(--latin); font-size: 17px; line-height: 1.7; margin: 0; border-left: 3px solid var(--en-bar); padding-left: 14px; color: #3d3935; }
+  .term { color: var(--accent); border-bottom: 1px dotted currentColor; }
+
+  /* 急救 */
+  .safety { padding: 96px 0 0; }
+  .safety .card { background: var(--surface); border-radius: 28px; box-shadow: 0 0 0 0.5px var(--hair); padding: clamp(24px, 5vw, 56px);
+                  display: grid; gap: 32px; align-items: center; overflow: hidden; }
+  @media (min-width: 900px) { .safety .card { grid-template-columns: 1.15fr 0.85fr; } }
+  .safety .phone { width: min(270px, 62vw); margin: 0 auto -18%; }
+  .safety p { color: var(--ink2); margin: 16px 0 0; }
+  .pill { display: inline-block; font-size: 13px; font-weight: 600; padding: 3px 10px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); }
+
+  /* 目录 */
+  .toc { padding: 104px 0 0; }
+  .parts { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); }
+  .part { background: var(--surface); border-radius: 22px; overflow: hidden; box-shadow: 0 0 0 0.5px var(--hair); }
+  .part > img { width: 100%; aspect-ratio: 3 / 1.55; object-fit: cover; }
+  @media (max-width: 600px) { .part > img { aspect-ratio: 3 / 1.15; } }
+  .part-body { padding: 16px 20px 18px; }
+  .kicker { margin: 0; font-size: 13px; color: var(--accent); font-weight: 600; }
+  .part h3 { font-size: 21px; margin-top: 2px; }
+  .part h3 i { font-size: 14px; margin-top: 2px; }
+  .part ol { list-style: none; padding: 0; margin: 12px 0 0; font-size: 14.5px; }
+  .part li { display: grid; grid-template-columns: 2.2em 1fr auto; gap: 8px; align-items: baseline; padding: 7px 0; border-top: 0.5px solid var(--hair); }
+  .lbl { color: var(--ink3); font-variant-numeric: tabular-nums; font-size: 13px; }
+  .badge { font-size: 11.5px; padding: 1px 8px; border-radius: 99px; white-space: nowrap; }
+  .badge.free { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  .badge.peek { color: var(--ink3); box-shadow: inset 0 0 0 0.5px var(--hair); }
+
+  /* 价格 */
+  .pricing { padding: 104px 0 0; }
+  .plans { display: grid; gap: 18px; max-width: 920px; margin: 0 auto; }
+  @media (min-width: 820px) { .plans { grid-template-columns: 1fr 1fr; } }
+  .plan { background: var(--surface); border-radius: 24px; padding: 28px 26px; box-shadow: 0 0 0 0.5px var(--hair); }
+  .plan.full { box-shadow: 0 0 0 1.5px var(--accent), 0 30px 60px -40px rgba(194, 37, 61, .45); }
+  .plan h3 { font-size: 24px; }
+  .price { font-family: var(--serif); font-size: 40px; font-weight: 700; margin: 10px 0 0; line-height: 1.1; }
+  .price small { display: block; font-family: var(--sans); font-size: 14px; font-weight: 400; color: var(--ink2); margin-top: 6px; }
+  .plan .ticks { font-size: 15.5px; }
+  .always { max-width: 920px; margin: 18px auto 0; font-size: 14.5px; color: var(--ink2); text-align: center; }
+
+  /* 问答 */
+  .faq { padding: 104px 0 0; }
+  .faq .list { max-width: 760px; margin: 0 auto; }
+  details { background: var(--surface); border-radius: 18px; padding: 2px 22px; margin: 10px 0; box-shadow: 0 0 0 0.5px var(--hair); }
+  summary { cursor: pointer; font-weight: 600; padding: 16px 0; }
+  details p { margin: 0 0 16px; color: var(--ink2); font-size: 15.5px; }
+  .more { text-align: center; margin: 20px 0 0; font-size: 15px; }
+
+  /* 收尾 */
+  .closing { padding: 112px 0 0; text-align: center; }
+  .closing img.icon { width: 96px; height: 96px; border-radius: 22px; margin: 0 auto 22px; box-shadow: 0 16px 30px -18px rgba(60, 30, 20, .5); }
+  .closing .cta { justify-content: center; }
+  footer { margin-top: 112px; padding: 28px 0 40px; border-top: 0.5px solid var(--hair); font-size: 13.5px; color: var(--ink3); }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 28px; justify-content: space-between; }
+  footer nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+  footer a { color: var(--ink2); }
+  footer p { margin: 0; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<header class="bar" id="bar">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="apple-touch-icon.png" alt="" width="30" height="30">人体使用手册</a>
+    <nav aria-label="页面导航"><a href="#read">功能</a><a href="#sample">试读</a><a href="#contents">目录</a><a href="#pricing">免费与完整版</a><a href="https://teancum.me/humanbody-support/">支持</a></nav>
+    <a class="btn btn-primary" data-store href="https://apps.apple.com/app/id6825831716"><span class="store-label">App Store 下载</span></a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow"><span>iPhone · iPad</span><span>中英双语</span><span>离线可读</span></p>
+        <h1>人体使用手册</h1>
+        <p class="en-title latin" lang="en">The Human Body: An Owner's Manual</p>
+        <p class="lead"><span class="q">心脏一天跳多少次？眼睛为什么有盲点？体检报告上的箭头要不要担心？</span><br>
+          一本从细胞讲到急救的人体科普书，做成了可以读、可以听、可以动手试的 App。</p>
+        <div class="cta">
+          <a class="btn btn-primary" data-store href="https://apps.apple.com/app/id6825831716"><span class="store-label">在 App Store 免费下载</span></a>
+          <a class="btn btn-ghost" href="#sample">先读一段</a>
+        </div>
+        <p class="fine"><b>免费下载</b>，前言、第 1 篇和「危险信号」一章可以读完 · 完整版一次买断 · 无广告，不用注册</p>
+      </div>
+      <div class="hero-visual">
+        <div class="wash" aria-hidden="true"></div>
+        <figure class="phone "><img src="img/01-home-bodymap.jpg" width="600" height="1304" alt="首页的人体地图：点心脏，直达第 14 章" fetchpriority="high" decoding="async"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats" aria-label="全书数字">
+    <div class="wrap"><ul>
+<li><b>35</b><span>章</span><i lang="en">chapters</i></li>
+<li><b>281</b><span>幅图</span><i lang="en">figures</i></li>
+<li><b>17</b><span>个互动实验</span><i lang="en">labs</i></li>
+<li><b>56</b><span>种疾病图鉴</span><i lang="en">disease cards</i></li>
+<li><b>401</b><span>道章末自测</span><i lang="en">quiz questions</i></li>
+<li><b>707</b><span>张术语卡</span><i lang="en">flashcards</i></li>
+    </ul></div>
+  </section>
+
+  <section class="feature" id="read">
+    <div class="wrap">
+      <div class="copy">
+        <span class="mark" aria-hidden="true">读</span>
+        <h2>每一段，都有中文和英文<i lang="en">Read it in Chinese, English, or both</i></h2>
+        <p>全书 8 篇 35 章，逐段中英对照。可以对照读，也可以只看中文或只看英文；单语模式下轻点段落就能看到译文。读懂人体，顺便学会医学英语。</p>
+        <ul class="ticks"><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>281 幅图，全屏放大，带编号标签和图例</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>术语一点就有解释，666 词中英术语表</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>朗读：中英文语音，读到哪段亮到哪段</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>宋体排版，字号可调，支持深色模式</span></li></ul>
+      </div>
+      <div class="duo">
+        <figure class="phone "><img src="img/02-reader-bilingual.jpg" width="600" height="1304" alt="阅读页：第 14 章，中英逐段对照" loading="lazy" decoding="async"></figure>
+        <figure class="phone "><img src="img/03-figure-labels.jpg" width="600" height="1304" alt="全屏看图：心脏冠状切面，带编号标签" loading="lazy" decoding="async"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="feature flip blue" id="play">
+    <div class="wrap">
+      <div class="copy">
+        <span class="mark" aria-hidden="true">玩</span>
+        <h2>动手试一次，比读十遍记得牢<i lang="en">17 hands-on labs</i></h2>
+        <p>17 个互动实验都连着书里的原文：拖动心率看心电图跳起来，跟着一个红细胞走完一圈血液循环，闭上一只眼找到自己的盲点。</p>
+        <ul class="ticks"><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>可以点的人体地图：16 个部位，直达对应章节</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>56 种常见病图鉴：病因、机制链、症状、诊断、治疗与预防、何时就医</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>测反应时间、扫一遍听力频率、算一算庞氏方格</span></li></ul>
+      </div>
+      <div class="duo">
+        <figure class="phone "><img src="img/05-lab-heartbeat.jpg" width="600" height="1304" alt="互动实验：心跳与心电图" loading="lazy" decoding="async"></figure>
+        <figure class="phone "><img src="img/04-disease-detail.jpg" width="600" height="1304" alt="疾病图鉴：高血压" loading="lazy" decoding="async"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="feature" id="learn">
+    <div class="wrap">
+      <div class="copy">
+        <span class="mark" aria-hidden="true">学</span>
+        <h2>读完考一考，隔几天再复习<i lang="en">Quizzes and spaced repetition</i></h2>
+        <p>每章末尾都有自测题，答错的题会再出现；术语卡按间隔重复安排复习，记得更久。</p>
+        <ul class="ticks"><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>401 道章末自测题，错题可以重练</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>707 张术语卡，间隔重复</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>看图识结构：把图上的标签藏起来考自己</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>学习进度热力图和连续学习天数</span></li></ul>
+      </div>
+      <div class="duo">
+        <figure class="phone "><img src="img/06-quiz.jpg" width="600" height="1304" alt="章末自测" loading="lazy" decoding="async"></figure>
+        <figure class="phone "><img src="img/08-progress.jpg" width="600" height="1304" alt="学习进度" loading="lazy" decoding="async"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sample" id="sample">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>先读一段<i lang="en">A page from the book</i></h2>
+        <p>这是第 14 章里的一节，在 App 里图可以全屏放大，红色的术语一点就有解释。</p>
+      </div>
+      <article class="page">
+      <p class="page-head"><span>第 14 章 · 心脏与循环</span><span lang="en">Chapter 14</span></p>
+      <h3><span class="sec-num">14.2</span>四个腔、两条路<i lang="en">Four chambers, two circuits</i></h3>
+      <figure class="figure">
+        <div class="figure-img"><img src="img/heart-cutaway.jpg" width="1100" height="619" alt="心脏冠状切面：四个腔" loading="lazy" decoding="async"><span class="dot" style="left:35.0%;top:33.0%">1</span><span class="dot" style="left:40.0%;top:68.0%">2</span><span class="dot" style="left:60.0%;top:34.0%">3</span><span class="dot" style="left:62.0%;top:62.0%">4</span><span class="dot" style="left:51.0%;top:63.0%">5</span><span class="dot" style="left:50.0%;top:9.0%">6</span><span class="dot" style="left:35.0%;top:12.0%">7</span></div>
+        <ol class="legend"><li><span class="num">1</span>右心房 <i lang="en">Right atrium</i></li><li><span class="num">2</span>右心室 <i lang="en">Right ventricle</i></li><li><span class="num">3</span>左心房 <i lang="en">Left atrium</i></li><li><span class="num">4</span>左心室 <i lang="en">Left ventricle</i></li><li><span class="num">5</span>室间隔 <i lang="en">Septum</i></li><li><span class="num">6</span>主动脉 <i lang="en">Aorta</i></li><li><span class="num">7</span>上腔静脉 <i lang="en">Superior vena cava</i></li></ol>
+        <figcaption>心脏冠状切面：四个腔 <i lang="en">Heart in coronal section: four chambers</i></figcaption>
+      </figure>
+      <p class="zh">心脏分左右两半，中间有隔膜（septum）隔开，左右的血不相混。每一半上面是<span class="term">心房</span>（atrium），负责收血；下面是心室（ventricle），负责往外泵。</p><p class="en" lang="en">The heart has left and right halves, separated by the septum so their blood does not mix. Each half has an upper <span class="term">atrium</span> that receives blood and a lower ventricle that pumps it out.</p><p class="zh">血流一圈要过心脏两次。右心把全身回来的缺氧血送进肺，叫<span class="term">肺循环</span>（pulmonary circulation）；左心把肺里回来的富氧血送往全身，叫<span class="term">体循环</span>（systemic circulation）。</p><p class="en" lang="en">Blood passes through the heart twice per lap. The right heart sends oxygen-poor blood from the body to the lungs (<span class="term">pulmonary circulation</span>); the left heart sends oxygen-rich blood from the lungs to the body (<span class="term">systemic circulation</span>).</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="safety">
+    <div class="wrap">
+      <div class="card">
+        <div>
+          <span class="pill">急救内容永远免费</span>
+          <h2 style="margin-top:16px">关键时刻，知道该做什么<i lang="en">Know when to get help</i></h2>
+          <p>第 35 章「什么时候必须就医」全文免费：哪些症状要马上打急救电话，哪些要当天去医院。还有两个永远免费的急救实验——用 BE FAST 六步识别中风，跟着每分钟 100–120 次的节拍练 CPR 按压。</p>
+          <p style="font-size:14px">本书是科普读物，不构成医疗建议，也不能用于诊断或治疗。身体不适请就医。</p>
+        </div>
+        <figure class="phone "><img src="img/07-redflags.jpg" width="600" height="1304" alt="危险信号速查" loading="lazy" decoding="async"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="toc" id="contents">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>目录<i lang="en">Contents</i></h2>
+        <p>从分子、细胞到大脑和心脏，再到睡眠、营养、体检和急救。每章都先讲一个「为什么要知道它」的场景，再讲结构和功能，最后是「使用与保养」和参考文献。</p>
+      </div>
+      <div class="parts">
+      <article class="part">
+        <img src="img/part-p0.jpg" width="720" height="480" alt="" loading="lazy" decoding="async">
+        <div class="part-body">
+          <p class="kicker">开始之前</p>
+          <h3>开始之前<i lang="en">Before You Start</i></h3>
+          <ol><li><span class="lbl">前言</span><span class="t">怎样读这本书</span><span class="badge free">免费</span></li></ol>
+        </div>
+      </article>
+      <article class="part">
+        <img src="img/part-p1.jpg" width="720" height="480" alt="" loading="lazy" decoding="async">
+        <div class="part-body">
+          <p class="kicker">第 1 篇</p>
+          <h3>地基：从分子到组织<i lang="en">Foundations</i></h3>
+          <ol><li><span class="lbl">1</span><span class="t">人体的层级：从分子到系统</span><span class="badge free">免费</span></li><li><span class="lbl">2</span><span class="t">细胞：30 多万亿个小工厂</span><span class="badge free">免费</span></li><li><span class="lbl">3</span><span class="t">四大组织：上皮、结缔、肌肉、神经</span><span class="badge free">免费</span></li><li><span class="lbl">4</span><span class="t">基因与遗传入门</span><span class="badge free">免费</span></li><li><span class="lbl">插章</span><span class="t">病理学入门：身体出错的五种方式</span><span class="badge free">免费</span></li></ol>
+        </div>
+      </article>
+      <article class="part">
+        <img src="img/part-p2.jpg" width="720" height="480" alt="" loading="lazy" decoding="async">
+        <div class="part-body">
+          <p class="kicker">第 2 篇</p>
+          <h3>支撑与运动<i lang="en">Support and Movement</i></h3>
+          <ol><li><span class="lbl">5</span><span class="t">骨骼系统：206 块骨与骨的重建</span><span class="badge peek">试读</span></li><li><span class="lbl">6</span><span class="t">肌肉与关节：收缩如何发生</span><span class="badge peek">试读</span></li></ol>
+        </div>
+      </article>
+      <article class="part">
+        <img src="img/part-p3.jpg" width="720" height="480" alt="" loading="lazy" decoding="async">
+        <div class="part-body">
+          <p class="kicker">第 3 篇</p>
+          <h3>控制中心<i lang="en">Control Systems</i></h3>
+          <ol><li><span class="lbl">7</span><span class="t">大脑：860 亿个神经元的网络</span><span class="badge peek">试读</span></li><li><span class="lbl">8</span><span class="t">脊髓、周围神经与自主神经</span><span class="badge peek">试读</span></li><li><span class="lbl">9</span><span class="t">视觉</span><span class="badge peek">试读</span></li><li><span class="lbl">10</span><span class="t">听觉与平衡</span><span class="badge peek">试读</span></li><li><span class="lbl">11</span><span class="t">嗅觉、味觉、触觉与疼痛</span><span class="badge peek">试读</span></li><li><span class="lbl">12</span><span class="t">内分泌系统：激素的慢速通信</span><span class="badge peek">试读</span></li></ol>
+        </div>
+      </article>
+      <article class="part">
+        <img src="img/part-p4.jpg" width="720" height="480" alt="" loading="lazy" decoding="async">
+        <div class="part-body">
+          <p class="kicker">第 4 篇</p>
+          <h3>运输与防御<i lang="en">Transport and Defense</i></h3>
+          <ol><li><span class="lbl">13</span><span class="t">血液</span><span class="badge peek">试读</span></li><li><span class="lbl">14</span><span class="t">心脏与循环：一天约 10 万次跳动</span><span class="badge peek">试读</span></li><li><span class="lbl">15</span><span class="t">淋巴与免疫系统</span><span class="badge peek">试读</span></li></ol>
+        </div>
+      </article>
+      <article class="part">
+        <img src="img/part-p5.jpg" width="720" height="480" alt="" loading="lazy" decoding="async">
+        <div class="part-body">
+          <p class="kicker">第 5 篇</p>
+          <h3>交换与边界<i lang="en">Exchange and Boundaries</i></h3>
+          <ol><li><span class="lbl">16</span><span class="t">呼吸系统</span><span class="badge peek">试读</span></li><li><span class="lbl">17</span><span class="t">消化道：从口腔到肛门</span><span class="badge peek">试读</span></li><li><span class="lbl">18</span><span class="t">肝、胆、胰</span><span class="badge peek">试读</span></li><li><span class="lbl">19</span><span class="t">泌尿系统与体液平衡</span><span class="badge peek">试读</span></li><li><span class="lbl">20</span><span class="t">皮肤、毛发与指甲</span><span class="badge peek">试读</span></li></ol>
+        </div>
+      </article>
+      <article class="part">
+        <img src="img/part-p6.jpg" width="720" height="480" alt="" loading="lazy" decoding="async">
+        <div class="part-body">
+          <p class="kicker">第 6 篇</p>
+          <h3>生命周期<i lang="en">The Life Cycle</i></h3>
+          <ol><li><span class="lbl">21</span><span class="t">男性生殖系统</span><span class="badge peek">试读</span></li><li><span class="lbl">22</span><span class="t">女性生殖系统与月经周期</span><span class="badge peek">试读</span></li><li><span class="lbl">23</span><span class="t">受精、胚胎与胎儿发育</span><span class="badge peek">试读</span></li><li><span class="lbl">24</span><span class="t">生长、青春期与衰老</span><span class="badge peek">试读</span></li></ol>
+        </div>
+      </article>
+      <article class="part">
+        <img src="img/part-p7.jpg" width="720" height="480" alt="" loading="lazy" decoding="async">
+        <div class="part-body">
+          <p class="kicker">第 7 篇</p>
+          <h3>整机运行<i lang="en">The Whole System</i></h3>
+          <ol><li><span class="lbl">25</span><span class="t">代谢：能量从哪里来</span><span class="badge peek">试读</span></li><li><span class="lbl">26</span><span class="t">稳态与体温调节</span><span class="badge peek">试读</span></li><li><span class="lbl">27</span><span class="t">睡眠与昼夜节律</span><span class="badge peek">试读</span></li><li><span class="lbl">28</span><span class="t">微生物组：住在你身上的伙伴</span><span class="badge peek">试读</span></li><li><span class="lbl">29</span><span class="t">应激反应</span><span class="badge peek">试读</span></li></ol>
+        </div>
+      </article>
+      <article class="part">
+        <img src="img/part-p8.jpg" width="720" height="480" alt="" loading="lazy" decoding="async">
+        <div class="part-body">
+          <p class="kicker">第 8 篇</p>
+          <h3>使用与保养<i lang="en">Operating and Maintaining</i></h3>
+          <ol><li><span class="lbl">30</span><span class="t">睡眠：有证据的做法</span><span class="badge peek">试读</span></li><li><span class="lbl">31</span><span class="t">营养：膳食指南读懂版</span><span class="badge peek">试读</span></li><li><span class="lbl">32</span><span class="t">运动：WHO 推荐量与力量训练</span><span class="badge peek">试读</span></li><li><span class="lbl">33</span><span class="t">压力、情绪与求助</span><span class="badge peek">试读</span></li><li><span class="lbl">34</span><span class="t">体检报告怎么读</span><span class="badge peek">试读</span></li><li><span class="lbl">35</span><span class="t">什么时候必须就医：危险信号清单</span><span class="badge free">免费</span></li></ol>
+        </div>
+      </article>
+      <article class="part">
+        <img src="img/part-appendix.jpg" width="720" height="480" alt="" loading="lazy" decoding="async">
+        <div class="part-body">
+          <p class="kicker">附录</p>
+          <h3>附录<i lang="en">Appendices</i></h3>
+          <ol><li><span class="lbl">附录 A</span><span class="t">中英术语表</span><span class="badge free">免费</span></li><li><span class="lbl">附录 B</span><span class="t">参考文献与延伸阅读</span><span class="badge free">免费</span></li></ol>
+        </div>
+      </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="pricing">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>先读，再决定<i lang="en">Free to start, one purchase for the whole book</i></h2>
+        <p>下载免费。觉得有用，再一次买下整本书——不是订阅，不会自动续费。</p>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <h3>免费试读</h3>
+          <p class="price">$0<small>下载就能读，不用注册</small></p>
+          <ul class="ticks"><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>前言「怎样读这本书」</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>第 1 篇「地基」5 章全文</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>第 35 章「什么时候必须就医」</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>附录：中英术语表、参考文献与延伸阅读</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>其余 30 章：每章试读开头和第一节</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>5 个实验：庞氏方格、反应时间、找到你的盲点、识别中风 BE FAST、CPR 节拍器</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>3 种疾病样例：脑卒中、高血压、2 型糖尿病</span></li></ul>
+        </div>
+        <div class="plan full">
+          <h3>完整版</h3>
+          <p class="price">$4.99<small>一次买断，不是订阅 · 各地区以 App Store 显示的当地价格为准</small></p>
+          <ul class="ticks"><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>全书：前言、35 章、插章和两个附录</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>全部 17 个互动实验</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>全部 56 种疾病图鉴</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>全部 401 道自测题和 707 张术语卡</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>支持家人共享；iPhone 和 iPad 买一次都能用</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>换手机后「恢复购买」，不会重复扣费</span></li></ul>
+        </div>
+      </div>
+      <p class="always">始终免费：术语表、危险信号速查、全书搜索、书签 / 高亮 / 笔记、学习进度、备份与 iCloud 同步，能读到的部分都能朗读。</p>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="wrap">
+      <div class="section-head"><h2>常见问题<i lang="en">FAQ</i></h2></div>
+      <div class="list">
+        <details><summary>需要什么设备？</summary><p>iPhone 或 iPad，系统需要 iOS / iPadOS 26 或更新版本。App 界面是中文，正文中英对照。</p></details>
+        <details><summary>要联网、要注册吗？</summary><p>都不用。全部内容装在 App 里，离线可读，没有广告。阅读进度、书签和笔记只保存在你的设备和你自己的 iCloud 里，开发者看不到，也不收集任何数据。</p></details>
+        <details><summary>书里的内容可以代替看医生吗？</summary><p>不能。本书是科普读物，不构成医疗建议，也不能用于诊断或治疗。书中的数字和结论来自公开的权威资料，参考文献附在每章末尾和附录 B；AI 生成的示意图在图注里都有标注。</p></details>
+        <details><summary>换了手机，买过的完整版还在吗？</summary><p>在。用同一个 Apple ID 登录，打开「设置 → 完整版 → 恢复购买」即可；家人共享里的家庭成员也能用。</p></details>
+      </div>
+      <p class="more">更多问题请看 <a href="https://teancum.me/humanbody-support/">支持页</a>，或写信到 <a href="mailto:dongxiyunei@gmail.com">dongxiyunei@gmail.com</a></p>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="wrap">
+      <img class="icon" src="icon-192.png" width="96" height="96" alt="人体使用手册 App 图标" loading="lazy">
+      <h2>把这本书装进口袋<i lang="en">Your body's manual, in your pocket</i></h2>
+      <div class="cta" style="margin-top:28px">
+        <a class="btn btn-primary" data-store href="https://apps.apple.com/app/id6825831716"><span class="store-label">在 App Store 免费下载</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 TeancumTian · 人体使用手册是科普读物，不构成医疗建议</p>
+    <nav aria-label="页脚"><a href="https://teancum.me/humanbody-support/">支持</a><a href="https://teancum.me/humanbody-support/privacy.html">隐私政策</a><a href="https://teancum.me/humanbody-support/terms.html">使用条款</a><a href="mailto:dongxiyunei@gmail.com">联系我们</a></nav>
+  </div>
+</footer>
+
+<script>
+  // 顶栏滚动后加一条细线
+  const bar = document.getElementById('bar');
+  addEventListener('scroll', () => bar.classList.toggle('scrolled', scrollY > 8), { passive: true });
+  // 还没上架时 App Store 查不到这个 App：按钮改成「即将上架」，上架以后自动变回下载链接
+  function hbLookup(r) {
+    if (r && r.resultCount > 0) return;
+    document.querySelectorAll('[data-store]').forEach(a => {
+      a.classList.add('soon');
+      a.removeAttribute('href');
+      a.querySelector('.store-label').textContent = '即将上架 App Store';
+    });
+  }
+</script>
+<script src="https://itunes.apple.com/lookup?id=6825831716&callback=hbLookup" async></script>
+</body>
+</html>
